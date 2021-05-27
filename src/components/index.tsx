@@ -2,6 +2,8 @@ import noop from '@jswork/noop';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import FormBuilder from 'antd-form-builder';
+import { Form, Button } from 'antd';
 
 export type Props = { className: string; value: object; onChange: Function };
 
@@ -30,22 +32,30 @@ export default class AntdLogin extends Component<Props> {
     onChange: noop
   };
 
-  handleClick = () => {
-    console.log('click me!');
+  handleFinish = (inEvent) => {
+    console.log('click me!', inEvent);
   };
 
   render() {
+    const meta = {
+      fields: [
+        { key: 'username', label: 'User Name', widgetProps: { autoComplete: 'off' } },
+        { key: 'password', label: 'Password', widget: 'password' }
+      ]
+    };
+
     const { className, value, onChange, ...props } = this.props;
+
     return (
       <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...props}>
-        <p>
-          <button
-            style={{ padding: 20, width: '100%' }}
-            onClick={this.handleClick}
-            className="icon-play">
-            Enjoy coding.
-          </button>
-        </p>
+        <Form onFinish={this.handleFinish}>
+          <FormBuilder meta={meta} />
+          <Form.Item wrapperCol={{ span: 16, offset: 8 }}>
+            <Button type="primary" htmlType="submit">
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     );
   }

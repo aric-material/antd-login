@@ -45,6 +45,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-test-renderer": "^17.0.0",
+    "antd": "^4.16.0",
     "babel-loader": "^8.2.2",
     "core-js": "^3.8.2",
     "css-loader": "^5.0.1",
@@ -73,6 +74,7 @@
   },
   "dependencies": {
     "@jswork/noop": "^1.0.0",
+    "antd-form-builder": "^2.1.2",
     "classnames": "^2.2.6"
   },
   "publishConfig": {
